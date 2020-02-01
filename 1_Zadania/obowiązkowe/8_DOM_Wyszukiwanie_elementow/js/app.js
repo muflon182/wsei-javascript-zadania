@@ -2,22 +2,54 @@ document.addEventListener("DOMContentLoaded", function () {
     /*
     Poniżej napisz kod rozwiązujący zadania. Odpowiedzi oddzielaj komentarzami.
      */
+    //Zadanie #0
+    console.log("Zadanie 0:");
 
-     let elementWithClassTitle = document.querySelector('.title');
-     function getDataAnimation(element) {
-         let variable = element.getAttribute('data-animation');
-         return variable;
-         
-     }
-     getDataAnimation(elementWithClassTitle);
+    const elements = document.getElementsByClassName('title');
 
-     let home = document.querySelector('#home');
-     let home2 = document.getElementById('home');
-     let firstLi = document.querySelector('li[data-direction]');
-     let firstBlock = document.querySelector('.block');
+    function getDataAnimation(elements) {
+        let newEl = elements[0];
+        newEl = newEl.getAttribute('data-animation');
 
-     //Zadanie 2
-     let liElements = document.querySelectorALL('nav li');
-     let paragraphElements = document.querySelectorAll('div p');
-     let divElements...
+        return newEl;
+    }
+    console.log(getDataAnimation(elements));
+
+    //Zadanie #1
+    console.log("Zadanie 1:");
+
+    const elementById1 = document.getElementById('home');
+    console.log(elementById1);
+    const elementById2 = document.querySelector('#home');
+    console.log(elementById2);
+
+    const elementByLi = document.getElementsByTagName('li')[0];
+    console.log(elementByLi);
+    
+    const elementByClass = document.getElementsByClassName('block')[0];
+    console.log(elementByClass);
+
+    //Zadanie #2
+    console.log("Zadanie 2:");
+    const liElementsInNav = document.getElementsByTagName('nav')[0].getElementsByTagName('li');
+    console.log(liElementsInNav);
+    
+    const divs = document.getElementsByTagName('div');
+    let paragraphs = [];
+    for(let i=0; i<divs.length; i++) {
+        let paragraphInDiv = divs[i].getElementsByTagName('p');
+        for(let j=0; j<paragraphInDiv.length; j++)
+            paragraphs.push(paragraphInDiv[j]);
+    }
+    console.log(paragraphs);
+
+    const articleDivs = document.getElementsByTagName('article')[0].querySelectorAll('div');
+    console.log(articleDivs);
+
+    //Zadanie #3
+    console.log("Zadanie 3:");
+
+    const articleInFirst = document.querySelector('article.first').querySelectorAll('h1');
+    console.log(articleInFirst.length);
+
 });

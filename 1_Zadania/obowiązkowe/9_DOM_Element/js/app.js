@@ -9,78 +9,97 @@ document.addEventListener("DOMContentLoaded", function () {
     Poniżej napisz kod rozwiązujący zadania
      */
 
-     function getDatasInfo(elements) {
-         let array = [];
-         for(let i = 0; i < elements.length; i++) {
-             array.push(elements[i].getAttribute('data-color'));
+     //Zadanie #0
+     console.log("Zadanie 0:");
 
-         }
-         return array;
+     function getDataInfo(elements) {
+         var newArray = [];
+
+         for(var i=0; i<elements.length; i++)
+            newArray.push(elements[i].getAttribute(elements[i].getAttributeNames('data')));
+
+        return newArray;     
      }
-     getDatasInfo(links);
+     console.log(getDataInfo(links));
 
-     //Zadanie 1
-     console.log(homeElement);
-     console.log(childElements);
-     console.log(banner);
-     console.log(blocks);
-     console.log(links);
+     //Zadanie #1
+     console.log("Zadanie 1:");
 
-     for(let i of childElements) console.log(`${i.tagName}, ${i.getAttribute('class')}`);
-     for(let i of blocks) console.log(`${i.tagName}, ${i.getAttribute('class')}`);
-     for(let i of links) console.log(`${i.tagName}, ${i.getAttribute('class')}`);
+     var items = [];
+     var itemsWithChild = [];
+     items.push(homeElement, childElements, banner, blocks, links);
 
-     //Zadanie 2
+     for(var i=0; i<items.length; i++) {
+         if(items[i].length !== undefined) {
+            for(var j=0; j<items[i].length; j++) {
+                itemsWithChild.push(items[i][j]);
+                console.log("item: "+items[i][j]+" has class: "+items[i][j].className
+                +" and tag: "+items[i][j].tagName);
+            }
+         }
+         else {
+            itemsWithChild.push(items[i]);
+            console.log("item: "+items[i]+" has class: "+items[i].className
+            +" and tag: "+items[i].tagName);
+         }
+     }
+     console.log(itemsWithChild);
 
-     blocks.forEach(function(block){
-         console.log(block.innerHTML)
-        console.log(block.outerHtML)
-        block.innerHTML = "Nowa wartość diva o klasie blocks"
-     })
+     //Zadanie #2
+     console.log("Zadanie 2:");
+     for(var i=0; i<blocks.length; i++) {
+         console.log(blocks[i].innerHtml);
+         console.log(blocks[i].outerHTML);
+         blocks[i].innerHtml = "Nowa zawartość diva o klasie blocks";
+         console.log(blocks[i].innerHtml);
+     }
+     //InnerHTML daje dostęp do zawartości tekstowej diva
+     //OuterHTML za to do skryptu diva
 
-     //Zadanie 3
-     let mainID = document.getElementById("mainFooter");
-     function getID(element){
-         console.log(element.id);
+     //Zadanie #3
+     console.log("Zadanie 3:");
+     var el = document.getElementById('mainFooter');
+
+     function getId(element) {
          return element.id;
-
      }
-     getID(mainID);
+     console.log(getId(el));
 
-     //Zadanie 4
+     //Zadanie #4
+     console.log("Zadanie 4:");
 
-     function getTags(elements){
-         let array = [];
-         for(let item of elements) {
-             array.push(item.tagName);
-             
-         }
-         return array;
+     function getTags(elements) {
+         var tags = [];
+         for(var i=0; i<elements.length; i++)
+            tags.push(elements[i].tagName);
+
+        return tags;
      }
      console.log(getTags(childElements));
 
-     //Zadanie 5
+     //Zadanie #5
+     console.log("Zadanie 5:");
 
-     function getClassInfo(element){
-         let array = [];
-         //console.log(element.classList);
-         for(let i = 0; i < element.classList.length; i++){
-             array.push(element.classList[i]);
-         }
-         return array;
+     function getClassInfo(element) {
+         var classes = [];
+         classes = element.classList;
+         return classes;
      }
+
      console.log(getClassInfo(banner));
 
-     //Zadanie 6
+     //Zadanie #6
+     console.log("Zadanie 6:");
 
-     const liElements = document.querySelectorAll('nav li')
-     function setDataDirection(elements){
-         elements.forEach(function(element){
-             if(!element.getAttribute('data-direction')){
-                 element.setAttribute('data-direction', 'top')
-             }
-         })
+     var liElements = document.getElementsByTagName('nav')[0].querySelectorAll('li');
+
+     function setDataDirection(elements) {
+        for(var i=0; i<elements.length; i++) {
+            if(!elements[i].getAttribute('data-direction')) {
+                elements[i].setAttribute('data-direction', 'top');
+            }               
+        }
+        return elements;
      }
-     setDatDirection(liElements);
+    //setDataDirection(liElements);
 });
-

@@ -1,3 +1,4 @@
+
 function countHello(number) {
     let counter = 1;
     let interval = setInterval ( function loop() {
